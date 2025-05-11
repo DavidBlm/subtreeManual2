@@ -15,28 +15,29 @@
 
     <servers>
         <server>
+            <id>se-nexus</id>
+            <username>cibuild</username>
+            <password>${env.cibuild}</password>
+        </server>
+
+        <server>
+            <id>github</id>
+            <username>travisbuilduser</username>
+            <password>${env.travisbuilduserpassword}</password>
+        </server>
+
+        <server>
             <id>gitlab-maven</id>
             <configuration>
                 <httpHeaders>
                     <property>
-                        <name>Private-Token</name>
-                        <value>${env.GITLABTOKEN}</value>
+                        <name>Job-Token</name>
+                        <value>${env.CI_JOB_TOKEN}</value>
                     </property>
                 </httpHeaders>
             </configuration>
         </server>
 
-        <server>
-            <id>gitlab-maven-mnist</id>
-            <configuration>
-                <httpHeaders>
-                    <property>
-                        <name>Private-Token</name>
-                        <value>${env.GITLABTOKEN}</value>
-                    </property>
-                </httpHeaders>
-            </configuration>
-        </server>
     </servers>
 
     <!--<mirrors>
